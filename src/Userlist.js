@@ -1,25 +1,16 @@
 import React from 'react';
 
-const userList = ({setAlluser}) => {
+const userList = ({user}) => {
     return (
         <section >
             <table className="table table-borderless">
-                <thead>
-                    <tr>
-                        <th className="text-secondary" scope="col">Name</th>
-                        <th className="text-secondary" scope="col">Course</th>
-                    </tr>
-                </thead>
+                <div>
                 <tbody>
-                    {
-                        setAlluser.map(user =>
-                            <tr>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
-                            </tr>
-                        )
-                    }
+                        <td><h4>{user.name}</h4></td>
+                        <td><h4>{user.email}</h4></td>
+                        <td><h4>{user.phone}</h4></td>
                 </tbody>
+                </div>
             </table>
         </section>
     );
