@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -7,6 +7,7 @@ import second from './Components/second-pic.jpg';
 import third from './Components/third-pic.jpg';
 import { useForm } from 'react-hook-form';
 import './Login.css';
+import Userlist from './Userlist';
 
 const customStyles = {
     content: {
@@ -19,21 +20,30 @@ const customStyles = {
     }
 };
 const Login = () => {
+    const [alluser, setAlluser] = useState([])
+    
+
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = e => {
         console.log(e)
-        // fetch('https://secure-harbor-26795.herokuapp.com/learnerData', {
-        //     method: 'POST',
-        //     headers: { 'content-type': 'application/json' },
-        //     body: JSON.stringify( data )
-        // })
-        //     .then(res => res.json())
-        //     .then(success => {
-        //         if (success) {
-        //             alert('Booking Successfully');
-        //         }
-        //     })
+        fetch('http://localhost:5000/addUser', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(e)
+        })
+            .then(res => res.json())
+            .then(success => {
+                if (success) {
+                    alert('Send Successfully');
+                }
+            })
     }
+
+    useEffect(() => {
+        fetch('http://localhost:5000/user')
+            .then(res => res.json())
+            .then(data => setAlluser(data))
+    }, [])
     return (
         <section className="d-flex section2">
             <div className="col-md-8 col-ms-12 image-control">
@@ -48,6 +58,9 @@ const Login = () => {
                         <img src={third} alt="Login-image" />
                     </div>
                 </Carousel>
+                <div>
+                <Userlist setAlluser={setAlluser}></Userlist>
+            </div>
             </div>
             <div className="col-md-4 col-ms-12 form">
                 <form style={customStyles} className="p-5" onSubmit={handleSubmit(onSubmit)}>
