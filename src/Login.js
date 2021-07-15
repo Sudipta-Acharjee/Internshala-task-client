@@ -4,6 +4,8 @@ import { Carousel } from 'react-responsive-carousel';
 import first from './Components/first-pic.jpg';
 import second from './Components/second-pic.jpg';
 import third from './Components/third-pic.jpg';
+import fourth from './Components/fourth.jpg';
+import fifth from './Components/fifth.jpg';
 import { useForm } from 'react-hook-form';
 import './Login.css';
 import Userlist from './Userlist';
@@ -43,7 +45,7 @@ const Login = () => {
     return (
         <section className="d-flex section2">
             <div className="col-md-8 col-ms-12 image-control">
-                <Carousel>
+                <Carousel autoPlay>
                     <div>
                         <img src={second} alt="Login-image" />
                     </div>
@@ -52,6 +54,12 @@ const Login = () => {
                     </div>
                     <div>
                         <img src={third} alt="Login-image" />
+                    </div>
+                    <div>
+                        <img src={fourth} alt="Login-image" />
+                    </div>
+                    <div>
+                        <img src={fifth} alt="Login-image" />
                     </div>
                 </Carousel>
                 <div>
