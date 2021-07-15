@@ -1,17 +1,18 @@
 import React from 'react';
-
-const userList = ({user}) => {
+import './Userlist.css'
+const userList = ({ user }) => {
     return (
         <section >
-            <table className="table table-borderless">
-                <div>
-                <tbody>
-                        <td><h4>{user.name}</h4></td>
-                        <td><h4>{user.email}</h4></td>
-                        <td><h4>{user.phone}</h4></td>
-                </tbody>
-                </div>
+            <div >
+            <table>
+                <br/>
+                <tr>
+                    <td><h5>Name: {user.name}</h5></td>
+                    <td><h5>E-mail: {user.email}</h5></td>
+                    <td><h5>Phone: {user.phone}</h5></td>
+                </tr>
             </table>
+            </div>
         </section>
     );
 };

@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import first from './Components/first-pic.jpg';
@@ -20,12 +20,8 @@ const customStyles = {
 };
 const Login = () => {
     const [users, setAlluser] = useState([])
-    
-
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = (e) => {
-        
-        console.log(e)
         fetch('http://localhost:5000/addUser', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
@@ -59,28 +55,28 @@ const Login = () => {
                     </div>
                 </Carousel>
                 <div>
-                {
-                    users.map(user => <Userlist user={user}></Userlist>)
-                }
-            </div>
+                    {
+                        users.map(user => <Userlist user={user}></Userlist>)
+                    }
+                </div>
             </div>
             <div className="col-md-4 col-ms-12 form">
-                <form style={customStyles} className="p-5"  onSubmit={handleSubmit(onSubmit)}>
+                <form style={customStyles} className="p-5" onSubmit={handleSubmit(onSubmit)}>
                     <h1 className="text-primary"> Info-collection</h1>
                     <div className="form-group mb-3">
                         <input type="text" className="form-control" name="name" placeholder="Your Name" {...register("name")} required />
                         {errors?.name && <span className="text-danger">This field is required</span>}
                     </div>
                     <div className="form-group mb-3">
-                        <input type="text" className="form-control" name="email" placeholder="Email"{...register("email")} required/>
+                        <input type="text" className="form-control" name="email" placeholder="Email"{...register("email")} required />
                         {errors?.email && <span className="text-danger">This field is required</span>}
                     </div>
                     <div className="form-group mb-3">
-                        <input type="text" className="form-control" name="phone" placeholder="Phone"{...register("phone")} required/>
+                        <input type="text" className="form-control" name="phone" placeholder="Phone"{...register("phone")} required />
                         {errors?.phone && <span className="text-danger">This field is required</span>}
                     </div>
                     <div className="form-group text-right">
-                        <button  type="submit" value="null" onClick={() => window.location.reload(false)} className="btn btn-primary">Send</button>
+                        <button type="submit" value="null" onClick={() => window.location.reload(false)} className="btn btn-primary">Send</button>
                     </div>
                 </form>
             </div>
