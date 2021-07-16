@@ -24,7 +24,7 @@ const Login = () => {
     const [users, setAlluser] = useState([])
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = (e) => {
-        fetch('http://localhost:5000/addUser', {
+        fetch('https://thawing-woodland-37473.herokuapp.com/addUser', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(e)
@@ -38,7 +38,7 @@ const Login = () => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/user')
+        fetch('https://thawing-woodland-37473.herokuapp.com/user')
             .then(res => res.json())
             .then(data => setAlluser(data))
     }, [])
